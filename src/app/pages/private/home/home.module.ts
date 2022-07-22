@@ -13,6 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 
 @NgModule({
@@ -23,18 +24,19 @@ import { MatMenuModule } from '@angular/material/menu';
     exports: [
         NavigationComponent
     ],
-    imports: [
-        CommonModule,
-        HomeRoutingModule,
-        LayoutModule,
-        MatToolbarModule,
-        MatButtonModule,
-        MatSidenavModule,
-        MatIconModule,
-        MatListModule,
-        MatGridListModule,
-        MatCardModule,
-        MatMenuModule
-    ]
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatGridListModule,
+    MatCardModule,
+    MatMenuModule,
+    MatFormFieldModule
+  ]
 })
 export class HomeModule { }

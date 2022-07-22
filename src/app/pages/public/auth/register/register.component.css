@@ -8,7 +8,7 @@
 }
 .login {
   width: 100%;
-  max-width: 330px;
+  max-width: 500px;
   padding: 15px;
   margin: auto;
   text-align: center;
@@ -22,4 +22,7 @@
 .button_2{
   border-radius: 50px;
   margin-left: 5%;
+}
+.name_regist{
+  margin-right: 15%;
 }

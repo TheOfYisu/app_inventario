@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PublicRoutingModule } from './public-routing.module';
-import { MatSliderModule } from '@angular/material/slider';
-
 
 @NgModule({
   declarations: [
@@ -11,7 +8,6 @@ import { MatSliderModule } from '@angular/material/slider';
   imports: [
     CommonModule,
     PublicRoutingModule,
-    MatSliderModule
   ]
 })
 export class PublicModule { }
