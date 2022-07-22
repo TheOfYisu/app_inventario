@@ -1,1 +1,42 @@
-<app-navigation></app-navigation>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Dashboard</a>
+      <a mat-list-item href="#">Inventario</a>
+      <a mat-list-item href="#">Distribucion</a>
+    </mat-nav-list>
+    <div></div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="toolbar_desig">
+      <mat-toolbar-row>
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon" class="bot_mostrmenu">menu</mat-icon>
+        </button>
+        <span class="let_hader">My App</span>
+        <span class="example-spacer"></span>
+        <div class="example-button-container">
+          <button mat-mini-fab aria-label="Example icon button with a menu icon" class="button_notification">
+            <mat-icon>notifications</mat-icon>
+          </button>
+        </div>
+        <button mat-raised-button [matMenuTriggerFor]="menu" class="menu_account"><mat-icon class="icon_account">account_circle</mat-icon> {{usuario}}<mat-icon>arrow_drop_down</mat-icon></button>
+        <mat-menu #menu="matMenu" class="menu_account_desple">
+          <button mat-menu-item>Profile</button>
+          <button mat-menu-item>Settings</button>
+          <button mat-menu-item>Log out</button>
+        </mat-menu>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

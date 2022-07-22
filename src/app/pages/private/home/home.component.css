@@ -1,0 +1,49 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  background-color: #dfe4e6;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.menu_account{
+  width: 200px;
+  height: 42px;
+  background-color: #365c68;
+  color: white;
+}
+.icon_account{
+  margin-right: 10%;
+}
+.toolbar_desig{
+  background-color: #164454;
+}
+.let_hader{
+  color:white;
+}
+
+.bot_mostrmenu{
+  color: white;
+}
+
+.example-button-container{
+  margin-right: 1%;
+}
+.button_notification{
+  background-color: #365c68;
+  color: white;
+}
