@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
+import {Observable} from "rxjs";
+import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {map, shareReplay} from "rxjs/operators";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  usuario="Jesus Garizao"
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+  items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+  expandedIndex = 0;
+  constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
+    Swal.fire({
+      icon: 'success',
+      title: 'Welcome',
+    })
   }
 
 }

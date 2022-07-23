@@ -1,1 +1,23 @@
-<p>login works!</p>
+<div class="body">
+
+  <div class="login">
+    <img [src]="logo" alt="" width="50%" height="80%">
+    <h1 class="h3 mb-3 fw-normal">Login</h1>
+    <mat-form-field class="ancho" appearance="fill">
+      <mat-label>Usuario</mat-label>
+      <input matInput [(ngModel)]="user" autocomplete="off">
+    </mat-form-field>
+    <mat-form-field class="ancho" appearance="fill">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput [(ngModel)]="password" autocomplete="off">
+    </mat-form-field>
+    <br>
+    <button (click)="verificar()" class="ancho" mat-raised-button mat-button color="primary">Login</button>
+    <br><br>
+    <div>Not
+      Registered?
+      <button class="button_2" routerLink="/pages/public/auth/register" mat-raised-button mat-button color="link">Create an
+        Account</button>
+    </div>
+  </div>
+</div>
