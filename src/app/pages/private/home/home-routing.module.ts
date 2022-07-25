@@ -3,21 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import {HomeComponent} from "./home.component";
 
 const routes: Routes = [
-  {path:'',
+  {
+    path:'',
     component:HomeComponent,
-    children: [
-      {
-        path: 'users',
-        loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
-      },
-      {
-        path: 'client',
-        loadChildren: () => import('./client/client.module').then(m => m.ClientModule)
-      }
+    children:[
+      {path:'inventario',loadChildren:()=>import('./inventory/inventory.module').then(m=>m.InventoryModule)}
     ]
-  },
-  {path: 'dashboard', loadChildren: () => import('./container/dashboard/dashboard.module').then(m => m.DashboardModule)},
-  {path:'inventario',loadChildren: ()=>import('./container/inventario/inventario.module').then(m=>m.InventarioModule)}
+  }
 
 ];
 
