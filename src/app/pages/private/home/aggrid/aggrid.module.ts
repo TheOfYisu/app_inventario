@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { AggridRoutingModule } from './aggrid-routing.module';
 import { AggridMainComponent } from './aggrid-main/aggrid-main.component';
+import {AgGridModule} from "ag-grid-angular";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { AggridMainComponent } from './aggrid-main/aggrid-main.component';
   ],
   imports: [
     CommonModule,
-    AggridRoutingModule
+    AggridRoutingModule,
+    AgGridModule,
+    HttpClientModule
   ]
 })
 export class AggridModule { }

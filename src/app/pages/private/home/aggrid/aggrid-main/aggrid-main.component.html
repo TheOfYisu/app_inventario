@@ -1,1 +1,11 @@
 <p>aggrid-main works!</p>
+<ag-grid-angular
+  style="width: 500px; height: 500px"
+  class="ag-theme-alpine"
+  [rowData]="rowData$ | async"
+  [columnDefs]="colDefs"
+  [defaultColDef]="defaultColDef"
+  [animateRows]="true"
+  (cellClicked)="onCellClicked($event)"
+>
+</ag-grid-angular>
