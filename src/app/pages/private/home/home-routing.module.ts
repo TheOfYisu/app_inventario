@@ -7,7 +7,7 @@ const routes: Routes = [
     path:'',
     component:HomeComponent,
     children:[
-      {path:'inventario',loadChildren:()=>import('./inventory/inventory.module').then(m=>m.InventoryModule)}
+      {path:'inventory',loadChildren:()=>import('./inventory/inventory.module').then(m=>m.InventoryModule)}
     ]
   }
 
