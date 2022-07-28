@@ -1,26 +1,35 @@
-.body {
+  .body-login {
   display: flex;
   align-items: center;
   justify-content: center;
   background-image: url("https://img.freepik.com/vector-premium/mujer-almacen-comprobando-niveles-inventario-mercancias-estanteria_327176-153.jpg?w=2000");
   height: 100%;
 }
-.login {
+.container-login {
   width: 100%;
   max-width: 330px;
-  padding: 15px;
   margin: auto;
   text-align: center;
-  background-color: white;
-  border-radius: 20px;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  padding: 3%;
+  box-shadow: 1px 1px 40px 1px #475c6a;
 }
-
-.ancho {
+.input-login {
   width: 80%;
-  border-radius: 50px;
+  border-radius: 10px;
+  padding-bottom: 3%;
 }
-
-.button_2{
+.button-login{
   border-radius: 50px;
-  margin-left: 5%;
+  width: 60%;
+  background-color: #475c6a;
+  color: #FFFFFF;
+}
+.img_logo_login{
+  border-radius: 100px;
+  width: 50%;
+  height: 80%;
+  box-shadow: 1px 1px 10px 1px black;
+  margin-bottom: 3%;
 }

@@ -10,7 +10,7 @@ import {LoginService} from  '../../../../core/services/login.service'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  logo = 'https://img.icons8.com/external-xnimrodx-blue-xnimrodx/344/external-login-seo-xnimrodx-blue-xnimrodx.png'
+  logo = 'https://scontent-bog1-1.xx.fbcdn.net/v/t1.6435-9/184973564_109645341293504_6021323643057604317_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=tFyPLNOqpGAAX8zOBpT&_nc_ht=scontent-bog1-1.xx&oh=00_AT9WWg4rGMVPF6IXpAx59PDGE5hZy7x8FdR4X7H87k6xxA&oe=6308C009'
   constructor(
     private serviciologin:LoginService,
     private router: Router
@@ -22,7 +22,11 @@ export class LoginComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: 'The fields are empty!',
+        text: 'Incorrect credentials!',
+        toast: true,
+        position: 'center',
+        background: '#475c6a',
+        color: '#dfe4e6'
       })
     }else{
       let credenciales=this.serviciologin.verificarlogin(this.user,this.password)
@@ -36,6 +40,10 @@ export class LoginComponent implements OnInit {
             icon: 'error',
             title: 'Oops...',
             text: 'Incorrect credentials!',
+            toast: true,
+            position: 'center',
+            background: '#475c6a',
+            color: '#dfe4e6'
           })
         }
       }
