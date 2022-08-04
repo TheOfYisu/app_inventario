@@ -1,89 +1,52 @@
-.sidenav{
-  background: #263238;
-  transition: all .5s ease;
-  position: fixed;
-  z-index: l;
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+  background-color: #dfe4e6;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
   top: 0;
-  width: 5rem;
-  height: 100vh;
-  box-shadow: 0.063rem 0 1.25rem 0 #8690a3;
+  z-index: 1;
+}
+.example-spacer {
+  flex: 1 1 auto;
 }
 
-.logo-container{
-  display: flex;
-  align-items: center;
-  padding: 0.938rem 0.938rem 0 0.938rem;
-  width: 100%;
+.menu_account{
+  width: 200px;
+  height: 42px;
+  background-color: #365c68;
+  color: white;
 }
-.logo{
-  background: #fff;
-  text-align: center;
-  width: 3rem;
-  min-width: 3rem;
-  border-radius: 0.313rem;
-  padding: 0.313rem;
-  font-size: 24px;
-  font-weight: 900;
-  cursor: pointer;
-  border: none;
+.icon_account{
+  margin-right: 10%;
 }
-.logo-text{
-  margin-left: 1.5rem;
-  font-size: 24px;
-  font-weight: 700;
-  color: #fff;
+.toolbar_desig{
+  background-color: #164454;
 }
-.btn-close{
-  margin-left: 15%;
-  cursor: pointer;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  background-color: transparent;
-  border: none;
-}
-.fa-times{
-  color: #fff;
-  font-size: 24px;
+.let_hader{
+  color:white;
 }
 
-.sidenav-collapsed{
-  width: 16.5625rem;
+.bot_mostrmenu{
+  color: white;
 }
 
-.sidenav-nav{
-  list-style: none;
-  padding: 0.938rem;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: calc(100% - 3.65rem);
-  cursor: pointer;
+.example-button-container{
+  margin-right: 1%;
 }
-
-.sidenav-nav-item{
-  width: 100%;
-  margin-bottom: 0.625rem;
+.button_notification{
+  background-color: #365c68;
+  color: white;
 }
-
-.sidenav-nav-link{
-  display: flex;
-  align-items: center;
-  height: 3rem;
-  color: #f3f3f3;
-  text-decoration: none;
-  transition: color .3s ease;
-}
-
-.sidenav-link-icon{
-  font-size: 22px;
-  width: 2rem;
-  min-width: 2rem;
-  margin: 0 0.5rem;
-  text-align: center;
-}
-
-.sidenav-link-text{
-  margin-left: 1.5rem;
+.icon-menu{
+  margin-right: 5%;
 }

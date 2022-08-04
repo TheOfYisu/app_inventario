@@ -12,9 +12,18 @@ export class AggridMainComponent implements OnInit {
 
   //Configurar columnas -->
   colDefs= [
-    {field:'make'},
-    {field:'model'},
-    {field:'price'}
+    {
+      headerName: "Id",
+      field: "id",
+    },
+    {
+      headerName: "Code",
+      field: "code",
+    },
+    {
+      headerName: "Name",
+      field: "name",
+    }
   ];
 
   //esta funcion hace que se pueda ordenar y filtrar, todo en una sola para no escibir varias lineas, se tiene que añadir en el html tambien.
@@ -23,11 +32,11 @@ export class AggridMainComponent implements OnInit {
   }
 
   //Configurar filas -->
-  /*
   //Datos fijos.
-  rowData: [
-    {make:'toyota',model:'celica',price:'35000'}
+  rowData= [
+    {id:'toyota',code:'celica',name:'35000'}
   ]
+  /*
   */
   //Colocar los datos del servidor, es decir, datos dinamicos.
   rowData$!: Observable<any[]>;
