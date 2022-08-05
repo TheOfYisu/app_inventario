@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       let credenciales=this.serviciologin.verificarlogin(this.user,this.password)
       if(credenciales[1]==true){
         if(credenciales[0]!="0"){
-          this.router.navigate(['/pages/private/home'])
+          this.router.navigate(['/pages/private/home/dashboard'])
         }
       }else if (credenciales[1]==false){
         if (credenciales[0]=="0"){

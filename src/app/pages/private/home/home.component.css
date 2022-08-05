@@ -49,4 +49,18 @@
 }
 .icon-menu{
   margin-right: 5%;
+  font-size: 40px;
+  width: auto;
+  height: auto;
+  color: #365c68;
+}
+.a-menu-home{
+  padding-top: auto;
+  margin-bottom: auto;
+}
+.list-menu-home{
+  padding: auto;
+}
+.img-menuvar-home{
+  margin-right: 10%;
 }
