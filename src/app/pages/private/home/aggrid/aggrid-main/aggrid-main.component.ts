@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {CellClickedEvent, ColDef} from "ag-grid-community";
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-aggrid-main',
@@ -27,7 +27,7 @@ export class AggridMainComponent implements OnInit {
     }
   ];
 
-  
+
   //Configurar filas -->
   //Datos fijos.
   rowData= [
@@ -42,8 +42,8 @@ export class AggridMainComponent implements OnInit {
   /*
   //Colocar los datos del servidor, es decir, datos dinamicos.
   rowData$!: Observable<any[]>;
-  
-  
+
+
   //Configurar eventos -->
   onCellClicked(event:CellClickedEvent){
     console.log(event)
@@ -51,22 +51,24 @@ export class AggridMainComponent implements OnInit {
   */
 
   //validador de form
-  id=new FormControl('',Validators.required)
-  name=new FormControl('',Validators.required)
-  code=new FormControl('',Validators.required)
 
-  newForm =new FormGroup({
-    id:this.id,
-    code:this.code,
-    name:this.name
-  })
-
-  onSubmit(){}
-
-  constructor( private http:HttpClient ) { }
+  form:FormGroup;
+  constructor(
+    private http:HttpClient,
+    private fb:FormBuilder
+  ) {
+    this.form=this.fb.group({
+      id:['',Validators.required],
+      name:['',Validators.required],
+      code:['',Validators.required]
+    })
+  }
   ngOnInit(): void {
     //-Datos llamados de la base de datos o el servidor.
     //this.rowData$ =this.http.get<any[]>('https://www.ag-grid.com/example-assets/row-data.json')
+  }
+  ingresar(){
+    console.log(this.form.value)
   }
 
 }

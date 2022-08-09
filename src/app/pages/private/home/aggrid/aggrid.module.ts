@@ -11,6 +11,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import {MatInputModule} from "@angular/material/input";
     MatButtonModule,
     MatSlideToggleModule,
     MatCardModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule,
+    MatDialogModule
   ]
 })
 export class AggridModule { }
