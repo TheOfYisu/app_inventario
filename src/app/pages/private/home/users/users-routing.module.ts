@@ -4,7 +4,7 @@ import {UsersMainComponent} from "./components/users-main/users-main.component";
 
 const routes: Routes = [{
   path: '',
-  component: UsersMainComponent
+  component: UsersMainComponent,
 }];
 
 @NgModule({

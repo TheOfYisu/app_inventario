@@ -1,0 +1,32 @@
+<div class="modal-add-form-users">
+  <form [formGroup]='form' (ngSubmit)="save_add_users()">
+<mat-dialog-content class="mat-typography">
+      <mat-card>
+        <mat-card-title class="title-card">Add Users</mat-card-title>
+        <mat-card-content class="content-card">
+          <mat-form-field class="input-id">
+            <mat-label>Enter you ID</mat-label>
+            <input type="number" matInput placeholder="123456789" formControlName="id">
+          </mat-form-field>
+          <div class="input-container">
+            <mat-form-field class="input-name">
+              <mat-label>Name</mat-label>
+              <input type="text" matInput placeholder="Jesus" formControlName="name">
+            </mat-form-field>
+            <mat-form-field class="input-code">
+              <mat-label>Code</mat-label>
+              <input type="text" matInput placeholder=a1b2c3d4 formControlName="code">
+            </mat-form-field>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button type="submit" mat-button class="button-save" [disabled]="form.invalid" [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions>
+  </form>
+</div>
+
+

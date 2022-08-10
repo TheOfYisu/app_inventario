@@ -3,6 +3,8 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {CellClickedEvent, ColDef} from "ag-grid-community";
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {MatDialog} from "@angular/material/dialog";
+import {AggridFormAddComponent, AggridFormsComponent} from "../aggrid-forms/aggrid-forms.component";
 
 @Component({
   selector: 'app-aggrid-main',
@@ -51,24 +53,22 @@ export class AggridMainComponent implements OnInit {
   */
 
   //validador de form
-
-  form:FormGroup;
-  constructor(
+    constructor(
     private http:HttpClient,
-    private fb:FormBuilder
+    public dialog: MatDialog
   ) {
-    this.form=this.fb.group({
-      id:['',Validators.required],
-      name:['',Validators.required],
-      code:['',Validators.required]
-    })
+
+  }
+
+  openDialg(){
+    const dialogRef = this.dialog.open(AggridFormAddComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   ngOnInit(): void {
     //-Datos llamados de la base de datos o el servidor.
     //this.rowData$ =this.http.get<any[]>('https://www.ag-grid.com/example-assets/row-data.json')
   }
-  ingresar(){
-    console.log(this.form.value)
-  }
-
 }
+

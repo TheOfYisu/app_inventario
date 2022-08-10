@@ -19,7 +19,7 @@
     </div>
   </div>
   <div class="item2">
-    <form [formGroup]='form' (ngSubmit)="ingresar()">
+    <form>
       <mat-card>
         <mat-card-title class="title-card">Add/Edit</mat-card-title>
         <div class="slide-toggles-form">
@@ -42,63 +42,11 @@
             </div>
         </mat-card-content>
         <mat-card-actions class="button-actions">
-          <button type="submit" mat-button class="button-save" [disabled]="form.invalid">Save</button>
+          <button type="submit" mat-button class="button-save">Save</button>
         </mat-card-actions>
       </mat-card>
     </form>
   </div>
 </div>
-
-
-<div class="grid">
-  <div class="item1">
-    <div class="botones-grilla">
-      <button mat-raised-button class="button-selec">Add</button>
-      <button mat-raised-button class="button-selec">Edit</button>
-      <button mat-raised-button class="button-selec">Disable</button>
-    </div>
-    <div class="slide-toggles-table">
-      <mat-slide-toggle>Show Inactive</mat-slide-toggle>
-    </div>
-    <div class="div-container-aggrip-example">
-      <ag-grid-angular
-        style="height: 500px; width: auto"
-        class="ag-theme-alpine"
-        [rowData]="rowData"
-        [columnDefs]="colDefs"
-      >
-      </ag-grid-angular>
-    </div>
-  </div>
-  <div class="item2">
-    <form [formGroup]='form' (ngSubmit)="ingresar()">
-      <mat-card>
-        <mat-card-title class="title-card">Add/Edit</mat-card-title>
-        <div class="slide-toggles-form">
-          <mat-slide-toggle>Active</mat-slide-toggle>
-        </div>
-        <mat-card-content class="content-card">
-          <mat-form-field class="input-id">
-            <mat-label>Enter you ID</mat-label>
-            <input type="number" matInput placeholder="123456789" formControlName="id">
-          </mat-form-field>
-          <div class="input-container">
-            <mat-form-field class="input-name">
-              <mat-label>Name</mat-label>
-              <input type="text" matInput placeholder="Jesus" formControlName="name">
-            </mat-form-field>
-            <mat-form-field class="input-code">
-              <mat-label>Code</mat-label>
-              <input type="text" matInput placeholder=a1b2c3d4 formControlName="code">
-            </mat-form-field>
-          </div>
-        </mat-card-content>
-        <mat-card-actions class="button-actions">
-          <button type="submit" mat-button class="button-save" [disabled]="form.invalid">Save</button>
-        </mat-card-actions>
-      </mat-card>
-    </form>
-  </div>
-</div>
-
+<button mat-button (click)="openDialg()">Open dialog</button>
 

@@ -13,11 +13,12 @@ import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatDialogModule} from "@angular/material/dialog";
+import {AggridFormAddComponent, AggridFormsComponent} from './aggrid-forms/aggrid-forms.component';
 
 
 @NgModule({
   declarations: [
-    AggridMainComponent
+    AggridMainComponent,AggridFormsComponent,AggridFormAddComponent
   ],
   imports: [
     CommonModule,
