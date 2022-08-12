@@ -34,6 +34,6 @@ export class AggridFormAddComponent{
     })
   }
   ingresar(){
-    console.log(this.form.value)
+    console.log(JSON.stringify(this.form.value))
   }
 }

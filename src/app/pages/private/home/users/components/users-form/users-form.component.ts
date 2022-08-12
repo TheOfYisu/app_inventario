@@ -1,5 +1,8 @@
 import { Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {get, getProperty} from "ag-grid-community/dist/lib/utils/object";
+import Swal from "sweetalert2";
+import getInput = module
 
 //formulario para agregar
 @Component({
@@ -13,13 +16,15 @@ export class UsersFormAddComponent{
     private fb:FormBuilder,
   ) {
     this.form=this.fb.group({
-      id:['',Validators.required],
       name:['',Validators.required],
-      code:['',Validators.required]
+      lastname:['',Validators.required],
+      email:['',Validators.required],
+      password:['',Validators.required],
+      checkpassword:['',Validators.required],
     })
   }
   save_add_users(){
-    console.log(this.form.value)
+    console.log(JSON.stringify(this.form.value))
   }
 
 }

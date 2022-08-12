@@ -20,21 +20,16 @@ export class UsersButtonmenuComponent implements OnInit {
 
   formaddusers(){
     const dialogRef = this.dialog.open(UsersFormAddComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    modalClass: 'modal-xl'
+    dialogRef.afterClosed();
   }
   formeditusers(){
     const dialogRef = this.dialog.open(UsersFormEditComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed();
   }
   formdeleteusers(){
     const dialogRef = this.dialog.open(UsersFormDeleteComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    dialogRef.afterClosed();
   }
 
   ngOnInit(): void {

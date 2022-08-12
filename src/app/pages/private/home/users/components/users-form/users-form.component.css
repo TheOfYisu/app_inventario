@@ -1,14 +1,18 @@
-.modal-add-form-users{
+.modal-form-users{
+  width: 500px;
+}
+.input-email{
   width: 100%;
 }
-.input-id{
-  width: 100%;
-}
-.input-container .mat-form-field + .mat-form-field {
+.input-container1 .input-name + .input-lastname {
   margin-left: 8px;
   width: auto;
 }
-.input-code, .input-name{
+.input-containe2 .input-password + .input-checkpassword {
+  margin-left: 8px;
+  width: auto;
+}
+.input-lastname, .input-name, .input-password, .input-checkpassword{
   width: 50%;
 }
 .button-actions{
@@ -23,4 +27,8 @@
 .button-save{
   background-color: #28a745;
   color: #fff;
+}
+.button-cancel{
+  color: #000000;
+  background-color: #FFFFFF;
 }
