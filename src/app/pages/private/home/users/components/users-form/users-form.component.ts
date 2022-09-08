@@ -2,7 +2,6 @@ import { Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {get, getProperty} from "ag-grid-community/dist/lib/utils/object";
 import Swal from "sweetalert2";
-import getInput = module
 
 //formulario para agregar
 @Component({
