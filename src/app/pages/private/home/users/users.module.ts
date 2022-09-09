@@ -4,12 +4,10 @@ import { CommonModule } from '@angular/common';
 import { UsersRoutingModule } from './users-routing.module';
 import {
   UsersFormAddComponent,
-  UsersFormDeleteComponent,
   UsersFormEditComponent,
 } from './components/users-form/users-form.component';
 import { UsersGridComponent } from './components/users-grid/users-grid.component';
 import { UsersMainComponent } from './components/users-main/users-main.component';
-import { UsersButtonmenuComponent } from './components/users-buttonmenu/users-buttonmenu.component';
 import {MatButtonModule} from '@angular/material/button';
 import {AgGridModule} from "ag-grid-angular";
 import {MatDialogModule} from "@angular/material/dialog";
@@ -18,16 +16,17 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
+import {MatTableModule} from '@angular/material/table'; 
+import {MatIconModule} from '@angular/material/icon'; 
+import {MatToolbarModule} from '@angular/material/toolbar'; 
 
 
 @NgModule({
   declarations: [
-    UsersFormAddComponent,
-    UsersFormEditComponent,
-    UsersFormDeleteComponent,
     UsersGridComponent,
     UsersMainComponent,
-    UsersButtonmenuComponent
+    UsersFormAddComponent,
+    UsersFormEditComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +38,10 @@ import {MatInputModule} from "@angular/material/input";
     MatSlideToggleModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule,
+    MatIconModule,
+    MatToolbarModule
   ]
 })
 export class UsersModule { }

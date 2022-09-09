@@ -1,0 +1,22 @@
+table {
+    width: 100%;
+  }
+.icon-edit{
+    color: #242e3b;
+    background: #fcbe2c;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.icon-delete{
+    color: #fff;
+    background: #d83547;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.accion_icon{
+    text-align: right;
+}
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }

@@ -1,6 +1,8 @@
 import { Component} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {get, getProperty} from "ag-grid-community/dist/lib/utils/object";
+import { Router } from '@angular/router';
+import { UsersService } from 'src/app/core/services/users.service';
+import { Usuarios } from 'src/app/interfaces/users';
 import Swal from "sweetalert2";
 
 //formulario para agregar
@@ -10,9 +12,11 @@ import Swal from "sweetalert2";
   styleUrls: ['./users-form.component.css']
 })
 export class UsersFormAddComponent{
-  form:FormGroup;
+  form:FormGroup
   constructor(
     private fb:FormBuilder,
+    private _addusers:UsersService,
+    private route:Router
   ) {
     this.form=this.fb.group({
       name:['',Validators.required],
@@ -23,7 +27,15 @@ export class UsersFormAddComponent{
     })
   }
   save_add_users(){
-    console.log(JSON.stringify(this.form.value))
+    const usuarioq:Usuarios={
+      id: this.form.value.checkpassword, 
+      name: this.form.value.name, 
+      lastname: this.form.value.lastname, 
+      email: this.form.value.email, 
+      password: this.form.value.password
+    }
+    this._addusers.addusuarios(usuarioq)
+    this.route.navigate(['/pages/private/home/users'])
   }
 
 }
@@ -35,18 +47,6 @@ export class UsersFormAddComponent{
 export class UsersFormEditComponent{
 
   constructor() { }
-
-}
-
-@Component({
-  selector: 'app-users-form',
-  templateUrl: "./users-form-delate.component.html",
-  styleUrls: ['./users-form.component.css']
-})
-export class UsersFormDeleteComponent {
-
-  ngOnInit(): void {
-  }
 
 }
 

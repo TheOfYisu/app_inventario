@@ -1,5 +1,12 @@
-<div class="button-users">
-  <app-users-buttonmenu></app-users-buttonmenu>
+<div class="menuusers">
+  <mat-toolbar-row>
+    <h1 class="titleusers">Usuarios</h1>
+    <span class="example-spacer"></span>
+    <button mat-raised-button class="icon-edit" (click)="formaddusers()">
+      <mat-icon>add</mat-icon>
+      Add
+    </button>
+  </mat-toolbar-row>
 </div>
 <div class="grid-users">
   <app-users-grid></app-users-grid>

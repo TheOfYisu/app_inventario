@@ -1,7 +1,61 @@
-<ag-grid-angular
-  style="height: 500px; width: auto"
-  class="ag-theme-alpine"
-  [rowData]="rowData"
-  [columnDefs]="colDefs"
->
-</ag-grid-angular>
+  <div *ngIf="listusuarios.length>0">
+    <mat-form-field appearance="standard">
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+    
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+    
+        <!-- Lastname Column -->
+        <ng-container matColumnDef="lastname">
+            <th mat-header-cell *matHeaderCellDef> Lastname </th>
+            <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+        </ng-container>
+    
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+    
+        <!-- Password Column -->
+        <ng-container matColumnDef="password">
+            <th mat-header-cell *matHeaderCellDef> Password </th>
+            <td mat-cell *matCellDef="let element" type="password"> {{element.password}} </td>
+        </ng-container>
+    
+        <!-- Acciones Column -->
+        <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element; let i = index" class="accion_icon">
+                <button mat-raised-button class="icon-edit">
+                    <mat-icon>edit</mat-icon>
+                    Edit
+                </button>
+                <button mat-raised-button class="icon-delete" (click)="usersdelete(i)">
+                    <mat-icon>delete</mat-icon>
+                    Delete
+                </button>
+            </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+<div *ngIf="listusuarios.length==0">
+    <h2>
+        No se encuentran usuarios registrado en el sistema.
+    </h2>
+</div>

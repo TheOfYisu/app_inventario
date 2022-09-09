@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersFormAddComponent } from '../users-form/users-form.component';
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-users-main',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersMainComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
+  }
+  formaddusers(){
+    const dialogRef = this.dialog.open(UsersFormAddComponent);
+    modalClass: 'modal-xl'
+    dialogRef.afterClosed();
   }
 
 }

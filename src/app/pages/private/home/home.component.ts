@@ -22,13 +22,5 @@ export class HomeComponent {
   constructor(private breakpointObserver: BreakpointObserver) {}
 
   ngOnInit(): void {
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Welcome',
-      showConfirmButton: false,
-      timer: 1500,
-      toast: true,
-    })
   }
 }
