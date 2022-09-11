@@ -1,8 +1,8 @@
 <div class="modal-form-users">
-  <form [formGroup]='form' (ngSubmit)="save_add_users()">
+  <form [formGroup]='formadduser' (ngSubmit)="save_users()">
 <mat-dialog-content class="mat-typography">
       <mat-card>
-        <mat-card-title class="title-card">Add Users</mat-card-title>
+        <mat-card-title class="title-card">{{isEdit ? 'Edit' : 'Add'}} Users</mat-card-title>
         <mat-card-content class="content-card">
           <div class="input-container1">
             <mat-form-field class="input-name">
@@ -10,21 +10,21 @@
               <input type="text" matInput placeholder="Jesus" formControlName="name">
             </mat-form-field>
             <mat-form-field class="input-lastname">
-              <mat-label>Code</mat-label>
+              <mat-label>Lastname</mat-label>
               <input type="text" matInput placeholder="Garizao" formControlName="lastname">
             </mat-form-field>
           </div>
           <mat-form-field class="input-email">
-            <mat-label>Enter you ID</mat-label>
+            <mat-label>Email</mat-label>
             <input type="email" matInput placeholder="example@gmail.com" formControlName="email">
           </mat-form-field>
           <div class="input-containe2">
             <mat-form-field class="input-password">
-              <mat-label>Name</mat-label>
+              <mat-label>Password</mat-label>
               <input type="password" matInput placeholder="***********" formControlName="password">
             </mat-form-field>
             <mat-form-field class="input-checkpassword">
-              <mat-label>Code</mat-label>
+              <mat-label>Check Password</mat-label>
               <input type="password" matInput placeholder="***********" formControlName="checkpassword">
             </mat-form-field>
           </div>
@@ -34,7 +34,7 @@
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close class="button-cancel">Cancel</button>
-  <button mat-button type="submit" mat-button class="button-save" [disabled]="form.invalid" [mat-dialog-close]="true">Add</button>
+  <button mat-button type="submit" mat-button class="button-save" [disabled]="formadduser.invalid" [mat-dialog-close]="true">{{isEdit ? 'Edit' : 'Add'}}</button>
 </mat-dialog-actions>
   </form>
 </div>

@@ -1,24 +1,23 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import { Router } from '@angular/router';
-import { UsersService } from 'src/app/core/services/users.service';
-import { Usuarios } from 'src/app/interfaces/users';
+import {Users_Service} from 'src/app/core/services/users.service';
+import { Users_interface} from 'src/app/interfaces/users';
 import Swal from "sweetalert2";
 
-//formulario para agregar
 @Component({
   selector: 'app-users-form',
-  templateUrl: "./users-form-add.component.html",
+  templateUrl: "./users-form.component.html",
   styleUrls: ['./users-form.component.css']
 })
-export class UsersFormAddComponent{
-  form:FormGroup
+export class UsersFormComponent implements OnInit{
+  formadduser:FormGroup
+  isEdit=false
+
   constructor(
     private fb:FormBuilder,
-    private _addusers:UsersService,
-    private route:Router
+    private Users_Service:Users_Service,
   ) {
-    this.form=this.fb.group({
+    this.formadduser=this.fb.group({
       name:['',Validators.required],
       lastname:['',Validators.required],
       email:['',Validators.required],
@@ -26,27 +25,47 @@ export class UsersFormAddComponent{
       checkpassword:['',Validators.required],
     })
   }
-  save_add_users(){
-    const usuarioq:Usuarios={
-      id: this.form.value.checkpassword, 
-      name: this.form.value.name, 
-      lastname: this.form.value.lastname, 
-      email: this.form.value.email, 
-      password: this.form.value.password
+
+  save_users(){
+    const adduser:Users_interface={
+      id:this.formadduser.value.checkpassword,
+      name:this.formadduser.value.name,
+      lastname:this.formadduser.value.lastname,
+      email:this.formadduser.value.email,
+      password:this.formadduser.value.password
     }
-    this._addusers.addusuarios(usuarioq)
-    this.route.navigate(['/pages/private/home/users'])
+    if(this.isEdit==false){
+      this.Users_Service.adduser(adduser)
+    }else{
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, changed it!',
+        toast: true,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          this.Users_Service.updateuser(adduser)
+          Swal.fire(
+            'Susefull!',
+            'Your file has been changed.',
+            'success'
+          )
+        }
+      })
+    }
+  }
+
+  ngOnInit():void {
+    this.Users_Service.edituser$.subscribe((data)=>{
+      this.isEdit=!!data?.id;
+      this.formadduser.patchValue(data)
+    })
   }
 
 }
-@Component({
-  selector: 'app-users-form',
-  templateUrl: "./users-form-edit.component.html",
-  styleUrls: ['./users-form.component.css']
-})
-export class UsersFormEditComponent{
 
-  constructor() { }
-
-}
 
