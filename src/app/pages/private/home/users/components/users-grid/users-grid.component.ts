@@ -6,8 +6,6 @@ import Swal from 'sweetalert2';
 import {UsersFormComponent} from "../users-form/users-form.component";
 import {MatDialog} from "@angular/material/dialog";
 
-
-
 @Component({
   selector: 'app-users-grid',
   templateUrl: './users-grid.component.html',
@@ -20,6 +18,7 @@ export class UsersGridComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'lastname', 'email', 'password', 'acciones'];
   dataSource !: MatTableDataSource<any>;
 
+  list:Users_interface[]
 
   constructor(
     private Users_Service: Users_Service,
@@ -29,9 +28,12 @@ export class UsersGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.getusers()
+    //this.Users_Service.getallusers().subscribe(data=>this.list=data)
+
   }
+
   getusers() {
-    this.Users_Service.users$.subscribe((data)=>{
+    this.Users_Service.getallusers().subscribe((data)=>{
       this.listusers=data;
       this.dataSource=new MatTableDataSource(data)
     })
@@ -49,7 +51,7 @@ export class UsersGridComponent implements OnInit {
       toast: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.Users_Service.deleteuser(index)
+        //this.Users_Service.deleteuser(index)
         Swal.fire(
           'Deleted!',
           'Your file has been deleted.',
@@ -64,7 +66,7 @@ export class UsersGridComponent implements OnInit {
     const dialogRef = this.dialog.open(UsersFormComponent);
     modalClass: 'modal-xl'
     dialogRef.afterClosed();
-    this.Users_Service.getuser(index)
+    //this.Users_Service.getuser(index)
   }
 
   applyFilter(event: Event) {

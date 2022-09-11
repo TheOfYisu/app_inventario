@@ -18,7 +18,7 @@ export class UsersMainComponent implements OnInit {
   ngOnInit(): void {
   }
   formaddusers(){
-    this.Users_service.clearUpdatedUser()
+    //this.Users_service.clearUpdatedUser()
     const dialogRef = this.dialog.open(UsersFormComponent);
     modalClass: 'modal-xl'
     dialogRef.afterClosed();

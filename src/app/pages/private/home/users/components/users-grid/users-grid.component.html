@@ -1,8 +1,4 @@
   <div *ngIf="listusers.length>0">
-    <mat-form-field appearance="standard">
-        <mat-label>Filter</mat-label>
-        <input matInput (keyup)="applyFilter($event)" #input>
-    </mat-form-field>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
         <!-- Id Column -->

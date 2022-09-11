@@ -35,7 +35,7 @@ export class UsersFormComponent implements OnInit{
       password:this.formadduser.value.password
     }
     if(this.isEdit==false){
-      this.Users_Service.adduser(adduser)
+      //this.Users_Service.adduser(adduser)
     }else{
       Swal.fire({
         title: 'Are you sure?',
@@ -48,7 +48,7 @@ export class UsersFormComponent implements OnInit{
         toast: true,
       }).then((result) => {
         if (result.isConfirmed) {
-          this.Users_Service.updateuser(adduser)
+          //this.Users_Service.updateuser(adduser)
           Swal.fire(
             'Susefull!',
             'Your file has been changed.',
@@ -60,10 +60,13 @@ export class UsersFormComponent implements OnInit{
   }
 
   ngOnInit():void {
+    /*
     this.Users_Service.edituser$.subscribe((data)=>{
       this.isEdit=!!data?.id;
       this.formadduser.patchValue(data)
     })
+
+     */
   }
 
 }
