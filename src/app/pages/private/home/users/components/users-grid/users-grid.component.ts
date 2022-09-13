@@ -28,12 +28,10 @@ export class UsersGridComponent implements OnInit {
 
   ngOnInit(): void {
     this.getusers()
-    //this.Users_Service.getallusers().subscribe(data=>this.list=data)
-
   }
 
   getusers() {
-    this.Users_Service.getallusers().subscribe((data)=>{
+    this.Users_Service.getallusers.subscribe((data)=>{
       this.listusers=data;
       this.dataSource=new MatTableDataSource(data)
     })
@@ -51,15 +49,19 @@ export class UsersGridComponent implements OnInit {
       toast: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        //this.Users_Service.deleteuser(index)
-        Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
-          'success'
-        )
+        this.Users_Service.deleteuser(this.listusers[index].id).subscribe()
+        Swal.fire({
+          title: 'Deleted!',
+          text: 'Your file has been deleted.',
+          icon: 'success',
+          confirmButtonColor: '#3085d6',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            window.location.reload()
+          }
+        })
       }
     })
-
   }
 
   getedituser(index:number){

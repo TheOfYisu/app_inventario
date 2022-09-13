@@ -10,14 +10,14 @@ import Swal from "sweetalert2";
   styleUrls: ['./users-form.component.css']
 })
 export class UsersFormComponent implements OnInit{
-  formadduser:FormGroup
+  formuser:FormGroup
   isEdit=false
 
   constructor(
     private fb:FormBuilder,
     private Users_Service:Users_Service,
   ) {
-    this.formadduser=this.fb.group({
+    this.formuser=this.fb.group({
       name:['',Validators.required],
       lastname:['',Validators.required],
       email:['',Validators.required],
@@ -28,47 +28,56 @@ export class UsersFormComponent implements OnInit{
 
   save_users(){
     const adduser:Users_interface={
-      id:this.formadduser.value.checkpassword,
-      name:this.formadduser.value.name,
-      lastname:this.formadduser.value.lastname,
-      email:this.formadduser.value.email,
-      password:this.formadduser.value.password
+      id:Math.floor(Math.random() * 100),
+      name:this.formuser.value.name,
+      lastname:this.formuser.value.lastname,
+      email:this.formuser.value.email,
+      password:this.formuser.value.password,
+      checkpassword:this.formuser.value.checkpassword
     }
-    if(this.isEdit==false){
-      //this.Users_Service.adduser(adduser)
+    if (adduser.password==adduser.checkpassword){
+      if(this.isEdit==false){
+        Swal.fire({
+          title: 'Are you sure?',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          toast: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.Users_Service.adduser(adduser).subscribe()
+            window.location.reload()
+          }
+        })
+      }else{
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, changed it!',
+          toast: true,
+        }).then((result) => {
+          if (result.isConfirmed) {
+            //this.Users_Service.updateuser(adduser)
+            Swal.fire(
+              'Susefull!',
+              'Your file has been changed.',
+              'success'
+            )
+          }
+        })
+      }
     }else{
-      Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, changed it!',
-        toast: true,
-      }).then((result) => {
-        if (result.isConfirmed) {
-          //this.Users_Service.updateuser(adduser)
-          Swal.fire(
-            'Susefull!',
-            'Your file has been changed.',
-            'success'
-          )
-        }
-      })
+      alert("Las contraseñas no son las mismas")
     }
+
   }
 
   ngOnInit():void {
-    /*
-    this.Users_Service.edituser$.subscribe((data)=>{
-      this.isEdit=!!data?.id;
-      this.formadduser.patchValue(data)
-    })
-
-     */
   }
-
 }
 
 

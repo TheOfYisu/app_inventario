@@ -1,6 +1,6 @@
 <div class="modal-form-users">
-  <form [formGroup]='formadduser' (ngSubmit)="save_users()">
-<mat-dialog-content class="mat-typography">
+  <form [formGroup]='formuser' (ngSubmit)="save_users()">
+    <mat-dialog-content class="mat-typography">
       <mat-card>
         <mat-card-title class="title-card">{{isEdit ? 'Edit' : 'Add'}} Users</mat-card-title>
         <mat-card-content class="content-card">
@@ -10,31 +10,31 @@
               <input type="text" matInput placeholder="Jesus" formControlName="name">
             </mat-form-field>
             <mat-form-field class="input-lastname">
-              <mat-label>Lastname</mat-label>
+              <mat-label>Code</mat-label>
               <input type="text" matInput placeholder="Garizao" formControlName="lastname">
             </mat-form-field>
           </div>
           <mat-form-field class="input-email">
-            <mat-label>Email</mat-label>
+            <mat-label>Enter you ID</mat-label>
             <input type="email" matInput placeholder="example@gmail.com" formControlName="email">
           </mat-form-field>
           <div class="input-containe2">
             <mat-form-field class="input-password">
-              <mat-label>Password</mat-label>
+              <mat-label>Name</mat-label>
               <input type="password" matInput placeholder="***********" formControlName="password">
             </mat-form-field>
             <mat-form-field class="input-checkpassword">
-              <mat-label>Check Password</mat-label>
+              <mat-label>Code</mat-label>
               <input type="password" matInput placeholder="***********" formControlName="checkpassword">
             </mat-form-field>
           </div>
         </mat-card-content>
       </mat-card>
 
-</mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close class="button-cancel">Cancel</button>
-  <button mat-button type="submit" mat-button class="button-save" [disabled]="formadduser.invalid" [mat-dialog-close]="true">{{isEdit ? 'Edit' : 'Add'}}</button>
-</mat-dialog-actions>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close class="button-cancel">Cancel</button>
+      <button mat-button type="submit" mat-button class="button-save" [disabled]="formuser.invalid" [mat-dialog-close]="true">Add</button>
+    </mat-dialog-actions>
   </form>
 </div>
