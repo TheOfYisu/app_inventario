@@ -27,15 +27,15 @@ export class UsersGridComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getusers()
+    this.cargarusers()
   }
-
-  getusers() {
-    this.Users_Service.getallusers.subscribe((data)=>{
-      this.listusers=data;
-      this.dataSource=new MatTableDataSource(data)
+  cargarusers() {
+    this.Users_Service.users$.subscribe((data) => {
+      this.listusers = data;
+      this.dataSource = new MatTableDataSource(data);
     })
   }
+
 
   deleteusers(index: number) {
     Swal.fire({
@@ -49,7 +49,7 @@ export class UsersGridComponent implements OnInit {
       toast: true,
     }).then((result) => {
       if (result.isConfirmed) {
-        this.Users_Service.deleteuser(this.listusers[index].id).subscribe()
+        this.Users_Service.deleteuser(this.listusers[index].id,index).subscribe()
         Swal.fire({
           title: 'Deleted!',
           text: 'Your file has been deleted.',
@@ -57,7 +57,7 @@ export class UsersGridComponent implements OnInit {
           confirmButtonColor: '#3085d6',
         }).then((result) => {
           if (result.isConfirmed) {
-            window.location.reload()
+            //window.location.reload()
           }
         })
       }
@@ -68,7 +68,7 @@ export class UsersGridComponent implements OnInit {
     const dialogRef = this.dialog.open(UsersFormComponent);
     modalClass: 'modal-xl'
     dialogRef.afterClosed();
-    //this.Users_Service.getuser(index)
+    this.Users_Service.updatedUser(index)
   }
 
   applyFilter(event: Event) {

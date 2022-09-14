@@ -45,8 +45,7 @@ export class UsersFormComponent implements OnInit{
           toast: true,
         }).then((result) => {
           if (result.isConfirmed) {
-            this.Users_Service.adduser(adduser).subscribe()
-            window.location.reload()
+            this.Users_Service.adduser(adduser)
           }
         })
       }else{
@@ -61,7 +60,7 @@ export class UsersFormComponent implements OnInit{
           toast: true,
         }).then((result) => {
           if (result.isConfirmed) {
-            //this.Users_Service.updateuser(adduser)
+            this.Users_Service.addUser(adduser);
             Swal.fire(
               'Susefull!',
               'Your file has been changed.',
@@ -76,7 +75,11 @@ export class UsersFormComponent implements OnInit{
 
   }
 
-  ngOnInit():void {
+  ngOnInit(): void {
+    this.Users_Service.editUser$.subscribe((data) => {
+      this.isEdit = !!data?.id;
+      this.formuser.patchValue(data)
+    });
   }
 }
 
