@@ -60,7 +60,7 @@ export class UsersFormComponent implements OnInit{
           toast: true,
         }).then((result) => {
           if (result.isConfirmed) {
-            this.Users_Service.addUser(adduser);
+            this.Users_Service.updateuser(adduser);
             Swal.fire(
               'Susefull!',
               'Your file has been changed.',

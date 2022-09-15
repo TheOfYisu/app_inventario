@@ -18,8 +18,6 @@ export class UsersGridComponent implements OnInit {
   displayedColumns: string[] = ['id', 'name', 'lastname', 'email', 'password', 'acciones'];
   dataSource !: MatTableDataSource<any>;
 
-  list:Users_interface[]
-
   constructor(
     private Users_Service: Users_Service,
     public dialog: MatDialog
@@ -64,11 +62,12 @@ export class UsersGridComponent implements OnInit {
     })
   }
 
-  getedituser(index:number){
+  getedituser(index: number){
+    const iduser=this.listusers[index].id
     const dialogRef = this.dialog.open(UsersFormComponent);
     modalClass: 'modal-xl'
     dialogRef.afterClosed();
-    this.Users_Service.updatedUser(index)
+    this.Users_Service.getuser(index,iduser)
   }
 
   applyFilter(event: Event) {

@@ -14,6 +14,9 @@ export class Users_Service {
   private editUser = new BehaviorSubject<Users_interface>( {} as Users_interface);
   editUser$ = this.editUser.asObservable();
 
+  private getindex=0
+  private iduser=0
+
   private urlback='http://127.0.0.1:5000/'
   constructor(
     private http: HttpClient
@@ -28,15 +31,8 @@ export class Users_Service {
   }
 
   adduser(user:Users_interface){
-    const jsonadduser={
-      'inid':user.id,
-      'inname':user.name,
-      'inlastname':user.lastname,
-      'inemail':user.email,
-      'inpassword':user.password
-    }
     this.users.next([...this.users.value,user])
-    return this.http.post<Users_interface>(`${this.urlback}/adduser`,jsonadduser).subscribe()
+    return this.http.post<Users_interface>(`${this.urlback}/adduser`,user).subscribe()
   }
 
   deleteuser(iduser:number,index:number){
@@ -44,12 +40,16 @@ export class Users_Service {
     return this.http.delete<Users_interface>(`${this.urlback}/deleteuser/${iduser}`)
   }
 
-  addUser(user: Users_interface) {
-    this.users.next([...this.users.value, user]);
+  getuser(index:number,iduse:number){
+    this.editUser.next(this.users.value[index])
+    this.getindex=index
+    this.iduser=iduse
   }
 
-  updatedUser(index: number) {
-    this.editUser.next(this.users.value[index]);
+  updateuser(user:Users_interface){
+    this.users.value[this.getindex]=user
+    this.users.next(this.users.value)
+    return this.http.put<Users_interface>(`${this.urlback}/updateusrs/${this.iduser}`,user).subscribe()
   }
 
 
