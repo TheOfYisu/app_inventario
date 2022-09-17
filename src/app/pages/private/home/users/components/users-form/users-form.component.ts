@@ -22,7 +22,7 @@ export class UsersFormComponent implements OnInit{
       lastname:['',Validators.required],
       email:['',Validators.required],
       password:['',Validators.required],
-      checkpassword:['',Validators.required],
+      checkpassword:['']
     })
   }
 
@@ -35,6 +35,7 @@ export class UsersFormComponent implements OnInit{
       password:this.formuser.value.password,
       checkpassword:this.formuser.value.checkpassword
     }
+    console.log(adduser)
     if (adduser.password==adduser.checkpassword){
       if(this.isEdit==false){
         Swal.fire({

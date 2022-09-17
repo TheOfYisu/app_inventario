@@ -7,14 +7,12 @@ import {MatTableModule} from "@angular/material/table";
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import {FormsModule} from "@angular/forms";
-import { RegisterComponent } from './register/register.component';
 import { AuthRoutingModule } from './auth-routing.module';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
   ],
   imports: [
     CommonModule,

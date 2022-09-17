@@ -9,8 +9,6 @@ const routes: Routes = [
     children:[
       {path:'inventory',loadChildren:()=>import('./inventory/inventory.module').then(m=>m.InventoryModule)},
       {path:'users',loadChildren:()=>import('./users/users.module').then(m=>m.UsersModule)},
-      {path:'client',loadChildren:()=>import('./client/client.module').then(m=>m.ClientModule)},
-      {path:'aggrid',loadChildren:()=>import('./aggrid/aggrid.module').then(m=>m.AggridModule)},
       {path:'dashboard',loadChildren:()=>import('./dashboard/dashboard.module').then(m=>m.DashboardModule)}
     ]
   }

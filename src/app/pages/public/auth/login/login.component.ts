@@ -10,7 +10,7 @@ import {LoginService} from  '../../../../core/services/login.service'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  logo = 'https://scontent-bog1-1.xx.fbcdn.net/v/t1.6435-9/184973564_109645341293504_6021323643057604317_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=tFyPLNOqpGAAX8zOBpT&_nc_ht=scontent-bog1-1.xx&oh=00_AT9WWg4rGMVPF6IXpAx59PDGE5hZy7x8FdR4X7H87k6xxA&oe=6308C009'
+  logo = 'https://cdn-icons-png.flaticon.com/512/3649/3649204.png'
   constructor(
     private serviciologin:LoginService,
     private router: Router
