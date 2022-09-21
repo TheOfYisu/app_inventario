@@ -11,13 +11,18 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from '@angular/material/button';
 import {MatRippleModule} from '@angular/material/core';
 import { InventoryViewDeviceComponent } from './component/inventory-view-device/inventory-view-device.component';
-
+import { InventoryGridComponent } from './component/inventory-grid/inventory-grid.component';
+import {AgGridModule} from "ag-grid-angular";
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from "@angular/material/icon";
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
     InventoryMainComponent,
     InventoryFormComponent,
-    InventoryViewDeviceComponent
+    InventoryViewDeviceComponent,
+    InventoryGridComponent
   ],
   imports: [
     CommonModule,
@@ -28,6 +33,10 @@ import { InventoryViewDeviceComponent } from './component/inventory-view-device/
     MatInputModule,
     MatButtonModule,
     MatRippleModule,
+    AgGridModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatGridListModule
   ]
 })
 export class InventoryModule { }

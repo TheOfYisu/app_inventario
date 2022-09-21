@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-inventory-view-device',
@@ -7,7 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InventoryViewDeviceComponent implements OnInit {
 
-  constructor() { }
+  fuctionback(){
+    this.router.navigate(['/pages/private/home/inventory'])
+  }
+
+  fuctionedit(){
+    alert("Editaste este device")
+  }
+
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }

@@ -1,0 +1,24 @@
+.fid{
+  display: flex;
+}
+.principal{
+  width: 150%;
+  border: solid #000000;
+  margin: 0% 1% 2% 1%;
+  padding: 1% 2% 3% 2%;;
+}
+.completea{
+  width: 300%;
+  border: solid #000000;
+  margin: 0% 1% 2% 1%;
+  padding: 1% 2% 3% 2%;
+}
+.buton-back{
+  margin: 0% 3% 0% 1%;;
+}
+.buton-edit{
+
+}
+.info-page{
+  flex: 1 1 auto;
+}

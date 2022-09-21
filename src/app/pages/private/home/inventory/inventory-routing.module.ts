@@ -7,7 +7,7 @@ import {InventoryViewDeviceComponent} from "./component/inventory-view-device/in
 const routes: Routes = [
   {path:'',component:InventoryMainComponent},
   {path:'form',component:InventoryFormComponent},
-  {path:'view/device/:id',component:InventoryViewDeviceComponent}
+  {path:'view/device',component:InventoryViewDeviceComponent}
 ];
 
 @NgModule({
