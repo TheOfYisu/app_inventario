@@ -7,7 +7,7 @@
     </button>
   </mat-toolbar>
 </p>
-<mat-tab-group>
+<mat-tab-group (selectedTabChange)="showdevices($event.tab)">
   <mat-tab label="Computers">
     <div class="container-inventory">
       <app-inventory-grid></app-inventory-grid>
@@ -18,13 +18,20 @@
       <app-inventory-grid></app-inventory-grid>
     </div>
   </mat-tab>
-  <mat-tab label="Keyboard and mouse">
+  <mat-tab label="Keyboard">
     <div class="container-inventory">
       <app-inventory-grid></app-inventory-grid>
     </div>
   </mat-tab>
-  <button mat-raised-button class="buton-back">
-    <mat-icon>add</mat-icon>
-    Back
-  </button>
+  <mat-tab label="Mouse">
+    <div class="container-inventory">
+      <app-inventory-grid></app-inventory-grid>
+    </div>
+  </mat-tab>
+  <mat-tab label="Headsets">
+  <div class="container-inventory">
+    <app-inventory-grid></app-inventory-grid>
+  </div>
+</mat-tab>
+
 </mat-tab-group>

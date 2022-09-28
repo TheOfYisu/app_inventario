@@ -1,0 +1,92 @@
+.info-page {
+  flex: 1 1 auto;
+}
+
+.container-inventory {
+  margin: 1% 2% 4% 2%;
+}
+
+.buton-save {
+  background-color: #28a745;
+  color: #FFFFFF;
+}
+
+.buton-back {
+  margin-right: 3%;
+}
+
+.form-add {
+  margin: 0 1%;
+}
+
+.container-form {
+  margin: 0% 0% 0% 2%;
+  text-align: justify-all;
+}
+
+.select-device {
+  margin: 2% 0 0 4%;
+}
+
+label {
+  margin-right: 4%;
+}
+
+.serial-interno {
+  width: 110px;
+}
+
+.marca {
+  width: 170px;
+}
+
+.modelo {
+  width: 190px;
+}
+
+.serial {
+  width: 240px
+}
+
+.select-status {
+  width: 190px;
+}
+
+.select-form-data {
+  width: 160px;
+}
+
+.component-computers {
+  width: 500px;
+  padding: 0;
+}
+
+.data-computer {
+  width: 45%;
+}
+
+.card-form {
+  margin: 1% 1% 0% 0%;
+  width: 50%;
+  padding: 1% 0% 0% 1%;
+}
+
+.container-card {
+  margin-top: 2%;
+}
+
+.contaier-computer {
+  display: flex;
+}
+
+.info-additional {
+  margin: 3% 0 5% 0;
+}
+
+.check-charge {
+  margin-left: 2%;
+  color: #164454;
+}
+.contaier-addi-info{
+  margin-top: 2%;
+}

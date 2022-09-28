@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {GridApi, SelectionChangedEvent} from "ag-grid-community";
-import {Router} from '@angular/router';
-import {query} from "@angular/animations";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Params, Router} from '@angular/router';
+import {InventoryService} from 'src/app/core/services/inventory.service'
 
 @Component({
   selector: 'app-inventory-grid',
@@ -10,33 +9,49 @@ import {query} from "@angular/animations";
 })
 export class InventoryGridComponent implements OnInit {
 
-  colDefs= [
-    {field: "id"},
+  device: String
+
+  rowData = []
+
+  colDefs = [
+    {field: "id_device"},
+    {field: "internal_serial"},
     {field: "brand"},
     {field: "model"},
-    {field: "seriel"},
-    {field: "commercial_value"},
-    {field: "invoice_number"},
+    {field: "serial"},
+    {field: "status"}
   ];
 
-  rowData= [
-    {id: 1, brand: 'dell', model: 'vostro 14', seriel: 'x1265x14', commercial_value: 2000000, invoice_number: 'adb1535'},
-    {id: 2, brand: 'dell', model: 'vostro 15', seriel: 'x1265x14', commercial_value: 2000000, invoice_number: 'adb1535'},
-    {id: 1, brand: 'dell', model: 'vostro 14', seriel: 'x1265x14', commercial_value: 2000000, invoice_number: 'adb1535'},
-    {id: 2, brand: 'dell', model: 'vostro 15', seriel: 'x1265x14', commercial_value: 2000000, invoice_number: 'adb1535'},
-  ]
-
   mostrar(row) {
-    const id=row.id
-    this.router.navigate(['/pages/private/home/inventory/view/device'],{queryParams:{id}})
+    const id = row.id
+    const device = this.device
+    this.router.navigate(['/pages/private/home/inventory/view/device'], {queryParams: {id, device}})
   }
 
   constructor(
-    private router: Router
+    private router: Router,
+    private getrouter: ActivatedRoute,
+    private InventoryService: InventoryService
   ) {
   }
 
   ngOnInit(): void {
+    this.getrouter.queryParams.subscribe(
+      (params: Params) => {
+        this.device = params['device']
+        if (params['device'] == 'Computers') {
+          this.InventoryService.getdeviceinit('computer')
+          this.InventoryService.devices_init$.subscribe((data)=>{
+            this.rowData=data
+          })
+        } else if ((params['device'] == 'Monitors')) {
+          this.InventoryService.getdeviceinit('display')
+          this.InventoryService.devices_init$.subscribe((data)=>{
+            this.rowData=data
+          })
+        }
+      }
+    )
   }
 
 }

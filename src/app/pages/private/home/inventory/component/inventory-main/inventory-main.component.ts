@@ -1,6 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {inventory_interface} from "../../../../../../interfaces/inventory";
-import {MatTableDataSource} from "@angular/material/table";
 import {Router} from "@angular/router";
 
 @Component({
@@ -21,6 +19,14 @@ export class InventoryMainComponent implements OnInit {
   ) {
   }
 
+  showdevices(tab){
+    const device=tab.textLabel
+    this.router.navigate(['/pages/private/home/inventory'],{queryParams:{device}})
+
+  }
+
   ngOnInit(): void {
+    const device='Computers'
+    this.router.navigate(['/pages/private/home/inventory'],{queryParams:{device}})
   }
 }
