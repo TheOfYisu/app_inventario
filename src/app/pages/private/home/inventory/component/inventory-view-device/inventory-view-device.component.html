@@ -13,24 +13,89 @@
 </p>
 <div class="fid">
   <div class="principal">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/250px-Angular_full_color_logo.svg.png"><br>
-    Angular (comúnmente llamado Angular 2+ o Angular 2) es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página. Su objetivo es aumentar las aplicaciones basadas en navegador con capacidad de Modelo Vista Controlador (MVC), en un esfuerzo para hacer que el desarrollo y las pruebas sean más fáciles.
+    <h1>{{onedevice}}</h1>
+    <img src="{{imgdevice}}" width="300px">
+    <mat-form-field class="form-add serial-interno" appearance="outline">
+      <mat-label>Internal Serial</mat-label>
+      <input matInput placeholder="S.E 000" autocomplete="off">
+    </mat-form-field>
+    <mat-form-field class="form-add serial-interno" appearance="outline">
+      <mat-label>Internal Serial</mat-label>
+      <input matInput placeholder="S.E 000" autocomplete="off">
+    </mat-form-field>
+    <mat-form-field class="form-add serial-interno" appearance="outline">
+      <mat-label>Internal Serial</mat-label>
+      <input matInput placeholder="S.E 000" autocomplete="off">
+    </mat-form-field>
   </div>
   <div class="completea">
-    Angular (comúnmente llamado Angular 2+ o Angular 2) es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página. Su objetivo es aumentar las aplicaciones basadas en navegador con capacidad de Modelo Vista Controlador (MVC), en un esfuerzo para hacer que el desarrollo y las pruebas sean más fáciles.
-    Angular (comúnmente llamado Angular 2+ o Angular 2) es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página. Su objetivo es aumentar las aplicaciones basadas en navegador con capacidad de Modelo Vista Controlador (MVC), en un esfuerzo para hacer que el desarrollo y las pruebas sean más fáciles.
-    Angular (comúnmente llamado Angular 2+ o Angular 2) es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página. Su objetivo es aumentar las aplicaciones basadas en navegador con capacidad de Modelo Vista Controlador (MVC), en un esfuerzo para hacer que el desarrollo y las pruebas sean más fáciles.
-    Angular (comúnmente llamado Angular 2+ o Angular 2) es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página. Su objetivo es aumentar las aplicaciones basadas en navegador con capacidad de Modelo Vista Controlador (MVC), en un esfuerzo para hacer que el desarrollo y las pruebas sean más fáciles.
-    Angular (comúnmente llamado Angular 2+ o Angular 2) es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página. Su objetivo es aumentar las aplicaciones basadas en navegador con capacidad de Modelo Vista Controlador (MVC), en un esfuerzo para hacer que el desarrollo y las pruebas sean más fáciles.
-    Angular (comúnmente llamado Angular 2+ o Angular 2) es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página. Su objetivo es aumentar las aplicaciones basadas en navegador con capacidad de Modelo Vista Controlador (MVC), en un esfuerzo para hacer que el desarrollo y las pruebas sean más fáciles.
-    Angular (comúnmente llamado Angular 2+ o Angular 2) es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página. Su objetivo es aumentar las aplicaciones basadas en navegador con capacidad de Modelo Vista Controlador (MVC), en un esfuerzo para hacer que el desarrollo y las pruebas sean más fáciles.
-    Angular (comúnmente llamado Angular 2+ o Angular 2) es un framework para aplicaciones web desarrollado en TypeScript, de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página. Su objetivo es aumentar las aplicaciones basadas en navegador con capacidad de Modelo Vista Controlador (MVC), en un esfuerzo para hacer que el desarrollo y las pruebas sean más fáciles.
+    <div class="general-information">
+      <form [formGroup]="form_general">
+        <mat-form-field class="form-add serial-interno" appearance="outline">
+          <mat-label>Internal Serial</mat-label>
+          <input matInput placeholder="S.E 000" autocomplete="off" formControlName="internal_serial">
+        </mat-form-field>
+        <mat-form-field class="form-add marca" appearance="outline">
+          <mat-label>Brand</mat-label>
+          <input type="text" matInput placeholder="Dell" autocomplete="off" formControlName="brand">
+        </mat-form-field>
+        <mat-form-field class="form-add modelo" appearance="outline">
+          <mat-label>Model</mat-label>
+          <input type="text" matInput placeholder="Vostro 14" autocomplete="off" formControlName="model">
+        </mat-form-field>
+        <mat-form-field class="form-add serial" appearance="outline">
+          <mat-label>Serial</mat-label>
+          <input type="text" matInput placeholder="CN-0HN22V-FCC00" autocomplete="off" formControlName="serial">
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-add select-status">
+          <mat-label>Status</mat-label>
+          <mat-select name="Estado" formControlName="selected_status">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let statu of status" [value]="statu.value">
+              {{statu.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-add select-form-data">
+          <mat-label>Location</mat-label>
+          <mat-select formControlName="select_location">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let location of locations" [value]="location.value">
+              {{location.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-add select-form-data">
+          <mat-label>Operation</mat-label>
+          <mat-select formControlName="select_operation">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let operation of operations" [value]="operation.value">
+              {{operation.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="form-add select-form-data">
+          <mat-label>Date of entry</mat-label>
+          <input matInput [matDatepicker]="dp3" formControlName="date_picker">
+          <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+          <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="form-add select-form-data" appearance="outline">
+          <mat-label>Unit value</mat-label>
+          <input type="number" matInput placeholder="2000000" autocomplete="off" formControlName="unit_value">
+        </mat-form-field>
+        <mat-form-field class="form-add select-form-data" appearance="outline">
+          <mat-label>Electronic Invoice</mat-label>
+          <input matInput placeholder="AF1463" autocomplete="off" formControlName="electronic_invoice">
+        </mat-form-field>
+        <mat-form-field class="form-add select-form-data" appearance="outline">
+          <mat-label>Supplier</mat-label>
+          <input matInput placeholder="Alkosto" autocomplete="off" formControlName="supplier">
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="device-information">
 
-
-
-
-
-
-
+    </div>
   </div>
 </div>

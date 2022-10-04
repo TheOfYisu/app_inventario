@@ -1,12 +1,13 @@
 import {Validators} from "@angular/forms";
 
 export interface inventory_init_interface {
-  id_device: string;
-  internal_serial: string;
+  No: number;
   brand: string;
   model: string;
   serial: string;
   status:string;
+  operation:string;
+  location:string;
 }
 
 export interface device_information_general {

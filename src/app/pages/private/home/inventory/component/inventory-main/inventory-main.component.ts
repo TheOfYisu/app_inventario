@@ -10,23 +10,22 @@ import {Router} from "@angular/router";
 
 export class InventoryMainComponent implements OnInit {
 
-  fuctionadd(){
-    this.router.navigate(['/pages/private/home/inventory/form'])
-  }
-
   constructor(
     private router: Router
   ) {
   }
 
-  showdevices(tab){
-    const device=tab.textLabel
-    this.router.navigate(['/pages/private/home/inventory'],{queryParams:{device}})
-
+  ngOnInit(): void {
+    const device = 'Computers'
+    this.router.navigate(['/pages/private/home/inventory'], {queryParams: {device}})
   }
 
-  ngOnInit(): void {
-    const device='Computers'
-    this.router.navigate(['/pages/private/home/inventory'],{queryParams:{device}})
+  adddevice() {
+    this.router.navigate(['/pages/private/home/inventory/form'])
+  }
+
+  showdevices(tab) {
+    const device = tab.textLabel
+    this.router.navigate(['/pages/private/home/inventory'], {queryParams: {device}})
   }
 }

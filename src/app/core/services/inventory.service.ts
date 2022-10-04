@@ -13,10 +13,10 @@ export class InventoryService {
   devices_init$=this.devices_init.asObservable()
 
   listdevicescomputers:inventory_init_interface[]=[
-    {id_device:'01',internal_serial:'sc-01',brand:'dell',model:'vostro 14',serial:'x2154',status:'disponible'}
+    {No:1,brand:'dell',model:'vostro 14',serial:'x2154',operation:'Centrum',location:'Offi 1010',status:'disponible'}
   ]
   listdevicesdisplay:inventory_init_interface[]=[
-    {id_device:'01',internal_serial:'sc-01',brand:'viwvision',model:'fx2145',serial:'a',status:'uso'}
+    {No:1,brand:'viwvision',model:'fx2145',serial:'a',operation:'Centrum',location:'Offi 1010',status:'uso'}
   ]
 
   constructor() {
@@ -32,12 +32,8 @@ export class InventoryService {
     }
   }
 
-  adddevice(devece_general:device_information_general[]){
-    const list:inventory_init_interface={
-      id_device:devece_general['internal_serial'],internal_serial:devece_general['internal_serial'],brand:devece_general['brand'],model:devece_general['model'],serial:devece_general['serial'],status:devece_general['selected_status']
-    }
-    this.devices_init.next([...this.devices_init.value,list])
-    console.log(this.devices_init.value)
+  adddevice(devece_general:inventory_init_interface){
+    console.log(devece_general)
   }
 
 }

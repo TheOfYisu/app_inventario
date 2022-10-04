@@ -10,23 +10,16 @@ import {InventoryService} from 'src/app/core/services/inventory.service'
 export class InventoryGridComponent implements OnInit {
 
   device: String
-
   rowData = []
-
   colDefs = [
-    {field: "id_device"},
-    {field: "internal_serial"},
+    {field: "No"},
     {field: "brand"},
     {field: "model"},
     {field: "serial"},
+    {field: "operation"},
+    {field: "location"},
     {field: "status"}
   ];
-
-  mostrar(row) {
-    const id = row.id
-    const device = this.device
-    this.router.navigate(['/pages/private/home/inventory/view/device'], {queryParams: {id, device}})
-  }
 
   constructor(
     private router: Router,
@@ -52,6 +45,12 @@ export class InventoryGridComponent implements OnInit {
         }
       }
     )
+  }
+
+  viewdevice(row) {
+    const serial = row.serial
+    const device = this.device
+    this.router.navigate(['/pages/private/home/inventory/view/device'], {queryParams: {serial, device}})
   }
 
 }

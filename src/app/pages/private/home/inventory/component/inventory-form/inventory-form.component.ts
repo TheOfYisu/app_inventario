@@ -50,9 +50,6 @@ export class InventoryFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  fuctionback() {
-    this.router.navigate(['/pages/private/home/inventory'])
-  }
 
   form(forms: string) {
     this.devicesellec = forms
@@ -91,7 +88,7 @@ export class InventoryFormComponent implements OnInit {
     return this.form_general.get('select_device').value;
   }
 
-  fuctionsave() {
+  savedevice() {
     this.InventoryService.adddevice(this.form_general.value)
   }
 }
