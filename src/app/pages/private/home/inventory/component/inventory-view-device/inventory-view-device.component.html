@@ -1,53 +1,55 @@
-<p>
-  <mat-toolbar>
-    <button mat-raised-button class="buton-back" (click)="fuctionback()">
-      <mat-icon>add</mat-icon>
-      Back
-    </button>
-    <span class="info-page">{{device}} Information</span>
-    <button mat-raised-button class="buton-edit" (click)="fuctionedit()">
-      <mat-icon>add</mat-icon>
-      Edit
-    </button>
-  </mat-toolbar>
-</p>
+<mat-toolbar>
+  <button mat-raised-button class="button-back" (click)="back_page()">
+    <mat-icon>keyboard_backspace</mat-icon>
+    Back
+  </button>
+  <span class="info-page">{{device}} Information</span>
+  <button mat-raised-button class="button-action button-edit" (click)="edit_information()">
+    <mat-icon>edit</mat-icon>
+    Edit
+  </button>
+  <button mat-raised-button class="button-action button-save" (click)="save_information()">
+    <mat-icon>save</mat-icon>
+    Save
+  </button>
+</mat-toolbar>
 <div class="fid">
   <div class="principal">
-    <h1>{{onedevice}}</h1>
     <img src="{{imgdevice}}" width="300px">
-    <mat-form-field class="form-add serial-interno" appearance="outline">
+    <mat-form-field appearance="outline">
       <mat-label>Internal Serial</mat-label>
       <input matInput placeholder="S.E 000" autocomplete="off">
     </mat-form-field>
-    <mat-form-field class="form-add serial-interno" appearance="outline">
+    <mat-form-field appearance="outline">
       <mat-label>Internal Serial</mat-label>
       <input matInput placeholder="S.E 000" autocomplete="off">
     </mat-form-field>
-    <mat-form-field class="form-add serial-interno" appearance="outline">
+    <mat-form-field appearance="outline">
       <mat-label>Internal Serial</mat-label>
       <input matInput placeholder="S.E 000" autocomplete="off">
     </mat-form-field>
   </div>
   <div class="completea">
-    <div class="general-information">
+    <div class="general-information container-information">
+      <h2>General Information</h2>
       <form [formGroup]="form_general">
-        <mat-form-field class="form-add serial-interno" appearance="outline">
+        <mat-form-field class="form-data serial-interno" appearance="outline">
           <mat-label>Internal Serial</mat-label>
           <input matInput placeholder="S.E 000" autocomplete="off" formControlName="internal_serial">
         </mat-form-field>
-        <mat-form-field class="form-add marca" appearance="outline">
+        <mat-form-field class="form-data marca" appearance="outline">
           <mat-label>Brand</mat-label>
           <input type="text" matInput placeholder="Dell" autocomplete="off" formControlName="brand">
         </mat-form-field>
-        <mat-form-field class="form-add modelo" appearance="outline">
+        <mat-form-field class="form-data modelo" appearance="outline">
           <mat-label>Model</mat-label>
           <input type="text" matInput placeholder="Vostro 14" autocomplete="off" formControlName="model">
         </mat-form-field>
-        <mat-form-field class="form-add serial" appearance="outline">
+        <mat-form-field class="form-data serial" appearance="outline">
           <mat-label>Serial</mat-label>
           <input type="text" matInput placeholder="CN-0HN22V-FCC00" autocomplete="off" formControlName="serial">
         </mat-form-field>
-        <mat-form-field appearance="outline" class="form-add select-status">
+        <mat-form-field appearance="outline" class="form-data select-status">
           <mat-label>Status</mat-label>
           <mat-select name="Estado" formControlName="selected_status">
             <mat-option>--</mat-option>
@@ -65,7 +67,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="outline" class="form-add select-form-data">
+        <mat-form-field appearance="outline" class="form-data select-form-data">
           <mat-label>Operation</mat-label>
           <mat-select formControlName="select_operation">
             <mat-option>--</mat-option>
@@ -74,28 +76,89 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="outline" class="form-add select-form-data">
+        <mat-form-field appearance="outline" class="form-data select-form-data">
           <mat-label>Date of entry</mat-label>
           <input matInput [matDatepicker]="dp3" formControlName="date_picker">
           <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
           <mat-datepicker #dp3 disabled="false"></mat-datepicker>
         </mat-form-field>
-        <mat-form-field class="form-add select-form-data" appearance="outline">
+        <mat-form-field class="form-data select-form-data" appearance="outline">
           <mat-label>Unit value</mat-label>
           <input type="number" matInput placeholder="2000000" autocomplete="off" formControlName="unit_value">
         </mat-form-field>
-        <mat-form-field class="form-add select-form-data" appearance="outline">
+        <mat-form-field class="form-data select-form-data" appearance="outline">
           <mat-label>Electronic Invoice</mat-label>
           <input matInput placeholder="AF1463" autocomplete="off" formControlName="electronic_invoice">
         </mat-form-field>
-        <mat-form-field class="form-add select-form-data" appearance="outline">
+        <mat-form-field class="form-data select-form-data" appearance="outline">
           <mat-label>Supplier</mat-label>
           <input matInput placeholder="Alkosto" autocomplete="off" formControlName="supplier">
         </mat-form-field>
       </form>
     </div>
-    <div class="device-information">
-
+    <div class="container-information">
+      <h2>Device Information</h2>
+    </div>
+    <div class="container-information">
+      <h2>Mantenance Information</h2>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="date_last_maintenance">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="date_last_maintenance"></mat-datepicker-toggle>
+          <mat-datepicker #date_last_maintenance></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Choose a date</mat-label>
+          <input matInput [matDatepicker]="next_date_maintenance">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="next_date_maintenance"></mat-datepicker-toggle>
+          <mat-datepicker #next_date_maintenance></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="container-note-maintenanc">
+        <div>
+          <label>Add note the maintenance</label>
+          <button mat-raised-button>
+            <mat-icon>add</mat-icon>
+            Add Note
+          </button>
+        </div>
+        <div>
+          <label>View note the maintenance</label>
+          <button mat-raised-button>
+            <mat-icon>pageview</mat-icon>
+            View Notes
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="container-information">
+      <h2>Repair Information</h2>
+      <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="date_last_maintenance">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="date_last_maintenance"></mat-datepicker-toggle>
+        <mat-datepicker #date_last_maintenance></mat-datepicker>
+      </mat-form-field>
+        <label>Add note the maintenance</label>
+        <button mat-raised-button>
+          <mat-icon>add</mat-icon>
+          Add Note
+        </button>
+      </div>
+      <div class="container-note-maintenanc">
+        <div>
+          <label>View note the maintenance</label>
+          <button mat-raised-button>
+            <mat-icon>pageview</mat-icon>
+            View Notes
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

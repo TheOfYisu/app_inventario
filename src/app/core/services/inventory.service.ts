@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {inventory_init_interface, device_information_general} from 'src/app/interfaces/inventory';
+import {inventory_init_interface, device_information_general, computer, aditional} from 'src/app/interfaces/inventory';
 import {BehaviorSubject} from "rxjs";
 
 @Injectable({
@@ -21,7 +21,6 @@ export class InventoryService {
 
   constructor() {
     this.getdeviceinit('computer')
-    console.log(this.devices_init.value)
   }
 
   getdeviceinit(device:string){
@@ -32,8 +31,18 @@ export class InventoryService {
     }
   }
 
-  adddevice(devece_general:inventory_init_interface){
-    console.log(devece_general)
+  adddevice_computer(devece_general:device_information_general,computer_infotmation:computer,additional_informattion:aditional){
+    console.log(devece_general,computer_infotmation,additional_informattion)
   }
+
+  adddevice_display(devece_general:device_information_general,additional_informattion:aditional){
+    console.log(devece_general,additional_informattion)
+  }
+
+  adddevice_general(device_general:device_information_general){
+    console.log(device_general)
+  }
+
+
 
 }

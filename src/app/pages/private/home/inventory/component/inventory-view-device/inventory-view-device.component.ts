@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params, Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {get} from "ag-grid-community/dist/lib/utils/object";
 
 @Component({
   selector: 'app-inventory-view-device',
@@ -10,9 +11,9 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 export class InventoryViewDeviceComponent implements OnInit {
 
   form_general: FormGroup;
-  onedevice="Computer"
+  onedevice = "Computer"
   device: String
-  imgdevice="https://i.dell.com/das/xa.ashx/global-site-design%20WEB/8e7e3ad0-7079-eb70-42b4-16e1d835dfb1/1/OriginalPng?id=Dell/Product_Images/Dell_Client_Products/Notebooks/Vostro_Notebooks/14_3468/global_spi/notebook-vostro-14-3468-non-touch-left-windows-hero-504x350-ng.psd"
+  imgdevice = "https://i.dell.com/das/xa.ashx/global-site-design%20WEB/8e7e3ad0-7079-eb70-42b4-16e1d835dfb1/1/OriginalPng?id=Dell/Product_Images/Dell_Client_Products/Notebooks/Vostro_Notebooks/14_3468/global_spi/notebook-vostro-14-3468-non-touch-left-windows-hero-504x350-ng.psd"
 
   devices = [
     {value: 'Computer'},
@@ -38,12 +39,18 @@ export class InventoryViewDeviceComponent implements OnInit {
     {value: 'Soft-g.NET'}
   ]
 
-  fuctionback() {
-    this.router.navigate(['/pages/private/home/inventory'])
-  }
-
-  fuctionedit() {
-    alert("Editaste este device")
+  datacomputer = {
+    internal_serial:'x1a',
+    brand: 'dell',
+    model: 'vostro 14',
+    serial: 'x2154',
+    selected_status:'Available',
+    select_location:'',
+    select_operation:'',
+    date_picker:'',
+    unit_value:'',
+    electronic_invoice:'',
+    supplier:'',
   }
 
   constructor(
@@ -52,7 +59,6 @@ export class InventoryViewDeviceComponent implements OnInit {
     private fb: FormBuilder,
   ) {
     this.form_general = this.fb.group({
-      select_device: [null, Validators.required],
       internal_serial: [null, Validators.required],
       brand: [null, Validators.required],
       model: [null, Validators.required],
@@ -73,6 +79,24 @@ export class InventoryViewDeviceComponent implements OnInit {
         this.device = params['device']
       }
     )
+    this.form_general.disable()
+    this.getdatadevice()
+  }
+
+  getdatadevice(){
+    this.form_general.patchValue(this.datacomputer)
+  }
+
+  back_page() {
+    this.router.navigate(['/pages/private/home/inventory'])
+  }
+
+  edit_information() {
+    this.form_general.enable()
+  }
+
+  save_information() {
+    this.form_general.disable()
   }
 
 }

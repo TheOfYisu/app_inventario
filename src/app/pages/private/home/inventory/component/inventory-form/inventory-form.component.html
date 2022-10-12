@@ -5,7 +5,7 @@
       Back
     </button>
     <span class="info-page">Add Device</span>
-    <button mat-raised-button class="buton-save" (click)="savedevice()">
+    <button mat-raised-button class="buton-save" (click)="savedevice()" [disabled]="!valitbutton">
       <mat-icon>save</mat-icon>
       Save
     </button>
@@ -13,11 +13,11 @@
 </div>
 
 <div class="container-form">
-  <form [formGroup]="form_general">
-    <div class="select-device">
+  <div class="select-device">
+    <form [formGroup]="select_device">
       <label>Select a Device:</label>
       <mat-form-field appearance="outline">
-        <mat-select formControlName="select_device">
+        <mat-select ngModele="select_device" formControlName="select_devices">
           <mat-option>--</mat-option>
           <mat-option *ngFor="let device of devices" [value]="device.value" (click)="form(device.value)">
             {{device.value}}
@@ -25,14 +25,16 @@
         </mat-select>
         <mat-error *ngIf="seletdevice">Please enter a device</mat-error>
       </mat-form-field>
-    </div>
+    </form>
+  </div>
+  <form [formGroup]="form_general">
     <mat-form-field class="form-add serial-interno" appearance="outline">
       <mat-label>Internal Serial</mat-label>
       <input matInput placeholder="S.E 000" autocomplete="off" formControlName="internal_serial">
     </mat-form-field>
     <mat-form-field class="form-add marca" appearance="outline">
       <mat-label>Brand</mat-label>
-      <input type="text" matInput placeholder="Dell" autocomplete="off" formControlName="brand">
+      <input matInput placeholder="Dell" autocomplete="off" formControlName="brand">
     </mat-form-field>
     <mat-form-field class="form-add modelo" appearance="outline">
       <mat-label>Model</mat-label>
@@ -77,7 +79,7 @@
     </mat-form-field>
     <mat-form-field class="form-add select-form-data" appearance="outline">
       <mat-label>Unit value</mat-label>
-      <input type="number" matInput placeholder="2000000" autocomplete="off" formControlName="unit_value">
+      <input matInput placeholder="2000000" autocomplete="off" formControlName="unit_value">
     </mat-form-field>
     <mat-form-field class="form-add select-form-data" appearance="outline">
       <mat-label>Electronic Invoice</mat-label>
@@ -90,9 +92,7 @@
   </form>
   <div [ngSwitch]="devicesellec">
     <div *ngSwitchCase="'Computer'">
-      <div>
-        <span>Computer</span>
-      </div>
+      <h1>Computer</h1>
       <form [formGroup]="form_computer" class="contaier-computer">
         <mat-card class="card-form">
           <div class="titel-card">
@@ -166,15 +166,57 @@
       </div>
     </div>
     <div *ngSwitchCase="'Display'">
-      <h1>Pantallas</h1>
+      <div class="info-additional">
+        <h1>Display</h1>
+        <span class="">The computer have charger?</span>
+        <mat-checkbox class="check-charge" [(ngModel)]="checked" color="primary">Yes</mat-checkbox>
+        <form [formGroup]="form_additional" *ngIf="checked" class="contaier-addi-info">
+          <span>Additional information</span>
+          <mat-card class="card-form">
+            <div class="titel-card">
+              <span>Charger</span>
+            </div>
+            <div class="container-card">
+              <mat-form-field class="form-add data-computer" appearance="outline">
+                <mat-label>Brand</mat-label>
+                <input matInput placeholder="Dell" autocomplete="off" formControlName="brand_carger">
+              </mat-form-field>
+              <mat-form-field class="form-add serial" appearance="outline">
+                <mat-label>Serial</mat-label>
+                <input matInput placeholder="CN-0HN22V-FCC00" autocomplete="off" formControlName="serial_carger">
+              </mat-form-field>
+            </div>
+          </mat-card>
+        </form>
+      </div>
     </div>
-    <div *ngSwitchCase="'kKeyboard'">
-      <h1>Teclado</h1>
+    <div *ngSwitchCase="'Networks'">
+      <h1>Network</h1>
+      <div>
+        <label>Select the type of network device:</label>
+        <mat-form-field appearance="outline">
+          <mat-select>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let network_device of networks_devices" [value]="network_device.value">
+              {{network_device.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <div *ngSwitchCase="'Home Appliances'">
+      <h1>Home Appliances</h1>
+      <div>
+        <label>Select the type of home appliance:</label>
+        <mat-form-field appearance="outline">
+          <mat-select>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let network_device of networks_devices" [value]="network_device.value">
+              {{network_device.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
   </div>
 </div>
-{{form_general.value | json}}
-<br>
-{{form_computer.value | json}}
-<br>
-{{form_additional.value | json}}

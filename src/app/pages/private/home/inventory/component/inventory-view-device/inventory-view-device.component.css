@@ -3,22 +3,66 @@
 }
 .principal{
   width: 150%;
-  border: solid #000000;
+  border: solid #9c9c9c 0.1px;
+  border-radius: 5px;
   margin: 0% 1% 2% 1%;
   padding: 1% 2% 3% 2%;;
 }
 .completea{
   width: 300%;
-  border: solid #000000;
+  border: solid #9c9c9c 0.1px;
+  border-radius: 5px;
   margin: 0% 1% 2% 1%;
   padding: 1% 2% 3% 2%;
 }
-.buton-back{
+.button-back{
   margin: 0% 3% 0% 1%;;
 }
-.buton-edit{
-
+.button-action{
+  margin: 0% 0% 0% 1%;;
+}
+.button-edit{
+  background-color: #fcbe2c;
+  color: #242e3b;
+}
+.button-save{
+  background-color: #28a745;
+  color: #FFFFFF;
 }
 .info-page{
   flex: 1 1 auto;
 }
+
+.form-data {
+  margin: 0 1%;
+}
+.serial-interno {
+  width: 110px;
+}
+
+.marca {
+  width: 170px;
+}
+
+.modelo {
+  width: 190px;
+}
+
+.serial {
+  width: 240px
+}
+
+.select-status {
+  width: 190px;
+}
+
+.select-form-data {
+  width: 160px;
+}
+.container-note-maintenanc{
+  display: flex;
+}
+.container-information{
+  margin: 2% 3% 0% 3%;
+}
+

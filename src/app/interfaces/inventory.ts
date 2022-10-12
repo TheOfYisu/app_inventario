@@ -23,5 +23,16 @@ export interface device_information_general {
   unit_value:string;
   electronic_invoice:string;
   supplier:string;
-
+}
+export interface computer{
+  brand_proccessor: string;
+  model_proccessor: string;
+  type_ram: string;
+  capacy_ram: string;
+  type_storage: string;
+  capacy_storage:string;
+}
+export interface aditional{
+  brand_carger: string;
+  serial_carger: string;
 }
