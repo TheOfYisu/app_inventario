@@ -1,99 +1,148 @@
 <div>
   <mat-toolbar>
-    <button mat-raised-button class="buton-back" routerLink="/pages/private/home/inventory">
+    <button
+      mat-raised-button
+      class="buton-back"
+      routerLink="/pages/private/home/inventory"
+    >
       <mat-icon>keyboard_backspace</mat-icon>
       Back
     </button>
     <span class="info-page">Add Device</span>
-    <button mat-raised-button class="buton-save" (click)="savedevice()" [disabled]="!valitbutton">
+    <button
+      mat-raised-button
+      class="buton-save"
+      (click)="savedevice()"
+      [disabled]="!formIsValid"
+    >
       <mat-icon>save</mat-icon>
       Save
     </button>
   </mat-toolbar>
 </div>
 
-<div class="container-form">
+<form class="container-form" [formGroup]="form_general">
   <div class="select-device">
-    <form [formGroup]="select_device">
-      <label>Select a Device:</label>
-      <mat-form-field appearance="outline">
-        <mat-select ngModele="select_device" formControlName="select_devices">
-          <mat-option>--</mat-option>
-          <mat-option *ngFor="let device of devices" [value]="device.value" (click)="form(device.value)">
-            {{device.value}}
-          </mat-option>
-        </mat-select>
-        <mat-error *ngIf="seletdevice">Please enter a device</mat-error>
-      </mat-form-field>
-    </form>
+    <label>Select a Device:</label>
+    <mat-form-field appearance="outline">
+      <mat-select ngModele="select_device" formControlName="select_devices">
+        <mat-option>--</mat-option>
+        <mat-option
+          *ngFor="let device of devices"
+          [value]="device.id"
+          (click)="changeDevice(device.description)"
+        >
+          {{ device.description }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="seletdevice">Please enter a device</mat-error>
+    </mat-form-field>
   </div>
-  <form [formGroup]="form_general">
-    <mat-form-field class="form-add serial-interno" appearance="outline">
-      <mat-label>Internal Serial</mat-label>
-      <input matInput placeholder="S.E 000" autocomplete="off" formControlName="internal_serial">
-    </mat-form-field>
-    <mat-form-field class="form-add marca" appearance="outline">
-      <mat-label>Brand</mat-label>
-      <input matInput placeholder="Dell" autocomplete="off" formControlName="brand">
-    </mat-form-field>
-    <mat-form-field class="form-add modelo" appearance="outline">
-      <mat-label>Model</mat-label>
-      <input type="text" matInput placeholder="Vostro 14" autocomplete="off" formControlName="model">
-    </mat-form-field>
-    <mat-form-field class="form-add serial" appearance="outline">
-      <mat-label>Serial</mat-label>
-      <input type="text" matInput placeholder="CN-0HN22V-FCC00" autocomplete="off" formControlName="serial">
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="form-add select-status">
-      <mat-label>Status</mat-label>
-      <mat-select name="Estado" formControlName="selected_status">
-        <mat-option>--</mat-option>
-        <mat-option *ngFor="let statu of status" [value]="statu.value">
-          {{statu.value}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="form-add select-form-data">
-      <mat-label>Location</mat-label>
-      <mat-select formControlName="select_location">
-        <mat-option>--</mat-option>
-        <mat-option *ngFor="let location of locations" [value]="location.value">
-          {{location.value}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="form-add select-form-data">
-      <mat-label>Operation</mat-label>
-      <mat-select formControlName="select_operation">
-        <mat-option>--</mat-option>
-        <mat-option *ngFor="let operation of operations" [value]="operation.value">
-          {{operation.value}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="outline" class="form-add select-form-data">
-      <mat-label>Date of entry</mat-label>
-      <input matInput [matDatepicker]="dp3" formControlName="date_picker">
-      <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
-      <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-    </mat-form-field>
-    <mat-form-field class="form-add select-form-data" appearance="outline">
-      <mat-label>Unit value</mat-label>
-      <input matInput placeholder="2000000" autocomplete="off" formControlName="unit_value">
-    </mat-form-field>
-    <mat-form-field class="form-add select-form-data" appearance="outline">
-      <mat-label>Electronic Invoice</mat-label>
-      <input matInput placeholder="AF1463" autocomplete="off" formControlName="electronic_invoice">
-    </mat-form-field>
-    <mat-form-field class="form-add select-form-data" appearance="outline">
-      <mat-label>Supplier</mat-label>
-      <input matInput placeholder="Alkosto" autocomplete="off" formControlName="supplier">
-    </mat-form-field>
-  </form>
+  <mat-form-field class="form-add serial-interno" appearance="outline">
+    <mat-label>Internal Serial</mat-label>
+    <input
+      matInput
+      placeholder="S.E 000"
+      autocomplete="off"
+      formControlName="internal_serial"
+    />
+  </mat-form-field>
+  <mat-form-field class="form-add marca" appearance="outline">
+    <mat-label>Brand</mat-label>
+    <input
+      matInput
+      placeholder="Dell"
+      autocomplete="off"
+      formControlName="brand"
+    />
+  </mat-form-field>
+  <mat-form-field class="form-add modelo" appearance="outline">
+    <mat-label>Model</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="Vostro 14"
+      autocomplete="off"
+      formControlName="model"
+    />
+  </mat-form-field>
+  <mat-form-field class="form-add serial" appearance="outline">
+    <mat-label>Serial</mat-label>
+    <input
+      type="text"
+      matInput
+      placeholder="CN-0HN22V-FCC00"
+      autocomplete="off"
+      formControlName="serial"
+    />
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-add select-status">
+    <mat-label>Status</mat-label>
+    <mat-select name="Estado" formControlName="selected_status">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let statu of status" [value]="statu.value">
+        {{ statu.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-add select-form-data">
+    <mat-label>Location</mat-label>
+    <mat-select formControlName="select_location">
+      <mat-option>--</mat-option>
+      <mat-option *ngFor="let location of locations" [value]="location.value">
+        {{ location.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-add select-form-data">
+    <mat-label>Operation</mat-label>
+    <mat-select formControlName="select_operation">
+      <mat-option>--</mat-option>
+      <mat-option
+        *ngFor="let operation of operations"
+        [value]="operation.value"
+      >
+        {{ operation.value }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="outline" class="form-add select-form-data">
+    <mat-label>Date of entry</mat-label>
+    <input matInput [matDatepicker]="dp3" formControlName="date_picker" />
+    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field class="form-add select-form-data" appearance="outline">
+    <mat-label>Unit value</mat-label>
+    <input
+      matInput
+      placeholder="2000000"
+      autocomplete="off"
+      formControlName="unit_value"
+    />
+  </mat-form-field>
+  <mat-form-field class="form-add select-form-data" appearance="outline">
+    <mat-label>Electronic Invoice</mat-label>
+    <input
+      matInput
+      placeholder="AF1463"
+      autocomplete="off"
+      formControlName="electronic_invoice"
+    />
+  </mat-form-field>
+  <mat-form-field class="form-add select-form-data" appearance="outline">
+    <mat-label>Supplier</mat-label>
+    <input
+      matInput
+      placeholder="Alkosto"
+      autocomplete="off"
+      formControlName="supplier"
+    />
+  </mat-form-field>
   <div [ngSwitch]="devicesellec">
     <div *ngSwitchCase="'Computer'">
       <h1>Computer</h1>
-      <form [formGroup]="form_computer" class="contaier-computer">
+      <div class="contaier-computer">
         <mat-card class="card-form">
           <div class="titel-card">
             <span>Processor</span>
@@ -101,11 +150,21 @@
           <div class="container-card">
             <mat-form-field class="form-add data-computer" appearance="outline">
               <mat-label>Brand</mat-label>
-              <input matInput placeholder="Intel" autocomplete="off" formControlName="brand_proccessor">
+              <input
+                matInput
+                placeholder="Intel"
+                autocomplete="off"
+                formControlName="brand_proccessor"
+              />
             </mat-form-field>
             <mat-form-field class="form-add data-computer" appearance="outline">
               <mat-label>Model</mat-label>
-              <input matInput placeholder="i5 10400" autocomplete="off" formControlName="model_proccessor">
+              <input
+                matInput
+                placeholder="i5 10400"
+                autocomplete="off"
+                formControlName="model_proccessor"
+              />
             </mat-form-field>
           </div>
         </mat-card>
@@ -116,11 +175,21 @@
           <div class="container-card">
             <mat-form-field class="form-add data-computer" appearance="outline">
               <mat-label>Type</mat-label>
-              <input matInput placeholder="DDRR 4" autocomplete="off" formControlName="type_ram">
+              <input
+                matInput
+                placeholder="DDRR 4"
+                autocomplete="off"
+                formControlName="type_ram"
+              />
             </mat-form-field>
             <mat-form-field class="form-add data-computer" appearance="outline">
               <mat-label>Capacity</mat-label>
-              <input matInput placeholder="8 GB" autocomplete="off" formControlName="capacy_ram">
+              <input
+                matInput
+                placeholder="8 GB"
+                autocomplete="off"
+                formControlName="capacy_ram"
+              />
             </mat-form-field>
           </div>
         </mat-card>
@@ -131,20 +200,30 @@
           <div class="container-card">
             <mat-form-field class="form-add data-computer" appearance="outline">
               <mat-label>Type</mat-label>
-              <input matInput placeholder="SSD" autocomplete="off" formControlName="type_storage">
+              <input
+                matInput
+                placeholder="SSD"
+                autocomplete="off"
+                formControlName="type_storage"
+              />
             </mat-form-field>
             <mat-form-field class="form-add data-computer" appearance="outline">
               <mat-label>Capacity</mat-label>
-              <input matInput placeholder="120 GB" autocomplete="off" formControlName="capacy_storage">
+              <input
+                matInput
+                placeholder="120 GB"
+                autocomplete="off"
+                formControlName="capacy_storage"
+              />
             </mat-form-field>
           </div>
         </mat-card>
-      </form>
+      </div>
       <div class="info-additional">
         <div class="info-additional">
           <span class="">The computer have charger?</span>
-          <mat-checkbox class="check-charge" [(ngModel)]="checked" color="primary">Yes</mat-checkbox>
-          <form [formGroup]="form_additional" *ngIf="checked" class="contaier-addi-info">
+          <mat-checkbox class="check-charge" color="primary">Yes</mat-checkbox>
+          <!-- <div *ngIf="checked" class="contaier-addi-info">
             <span>Additional information</span>
             <mat-card class="card-form">
               <div class="titel-card">
@@ -161,7 +240,7 @@
                 </mat-form-field>
               </div>
             </mat-card>
-          </form>
+          </div> -->
         </div>
       </div>
     </div>
@@ -169,25 +248,43 @@
       <div class="info-additional">
         <h1>Display</h1>
         <span class="">The computer have charger?</span>
-        <mat-checkbox class="check-charge" [(ngModel)]="checked" color="primary">Yes</mat-checkbox>
-        <form [formGroup]="form_additional" *ngIf="checked" class="contaier-addi-info">
+        <mat-checkbox
+          class="check-charge"
+          color="primary"
+          formControlName="havecharger"
+          >Yes</mat-checkbox
+        >
+        <div *ngIf="checked" class="contaier-addi-info">
           <span>Additional information</span>
           <mat-card class="card-form">
             <div class="titel-card">
               <span>Charger</span>
             </div>
             <div class="container-card">
-              <mat-form-field class="form-add data-computer" appearance="outline">
+              <mat-form-field
+                class="form-add data-computer"
+                appearance="outline"
+              >
                 <mat-label>Brand</mat-label>
-                <input matInput placeholder="Dell" autocomplete="off" formControlName="brand_carger">
+                <input
+                  matInput
+                  placeholder="Dell"
+                  autocomplete="off"
+                  formControlName="brand_carger"
+                />
               </mat-form-field>
               <mat-form-field class="form-add serial" appearance="outline">
                 <mat-label>Serial</mat-label>
-                <input matInput placeholder="CN-0HN22V-FCC00" autocomplete="off" formControlName="serial_carger">
+                <input
+                  matInput
+                  placeholder="CN-0HN22V-FCC00"
+                  autocomplete="off"
+                  formControlName="serial_carger"
+                />
               </mat-form-field>
             </div>
           </mat-card>
-        </form>
+        </div>
       </div>
     </div>
     <div *ngSwitchCase="'Networks'">
@@ -197,8 +294,11 @@
         <mat-form-field appearance="outline">
           <mat-select>
             <mat-option>--</mat-option>
-            <mat-option *ngFor="let network_device of networks_devices" [value]="network_device.value">
-              {{network_device.value}}
+            <mat-option
+              *ngFor="let network_device of networks_devices"
+              [value]="network_device.value"
+            >
+              {{ network_device.value }}
             </mat-option>
           </mat-select>
         </mat-form-field>
@@ -211,12 +311,15 @@
         <mat-form-field appearance="outline">
           <mat-select>
             <mat-option>--</mat-option>
-            <mat-option *ngFor="let network_device of networks_devices" [value]="network_device.value">
-              {{network_device.value}}
+            <mat-option
+              *ngFor="let network_device of networks_devices"
+              [value]="network_device.value"
+            >
+              {{ network_device.value }}
             </mat-option>
           </mat-select>
         </mat-form-field>
       </div>
     </div>
   </div>
-</div>
+</form>
